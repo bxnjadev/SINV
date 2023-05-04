@@ -8,8 +8,8 @@ public class Instrument {
         return stockAvailable > 0;
     }
 
-    public void removeStock(int quantityStock) {
-        setStock(getStock() - quantityStock);
+    public void removeStock() {
+        setStock(getStock() - 1);
     }
 
     public int getStock() {
@@ -33,5 +33,12 @@ public class Instrument {
 
     }
 
+    public String getName() {
+
+    }
+
+    public int getPrice() {
+
+    }
 
 }

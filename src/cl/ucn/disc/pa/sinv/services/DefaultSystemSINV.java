@@ -31,7 +31,22 @@ public class DefaultSystemSINV implements SystemSINV {
 
     @Override
     public Ticket sellInstrument(String code) {
-        return null;
+        Instrument instrumentSearched = searchInstrumentByCode(code);
+
+        if (instrumentSearched == null) {
+            throw new IllegalArgumentException("The instrument is not registered!");
+        }
+
+        if (!instrumentSearched.hasStock()) {
+            throw new IllegalArgumentException("The instrument have not stock");
+        }
+
+        instrumentSearched.removeStock();
+
+        return new Ticket(
+                instrumentSearched.getName(),
+                instrumentSearched.getPrice()
+        );
     }
 
     @Override
