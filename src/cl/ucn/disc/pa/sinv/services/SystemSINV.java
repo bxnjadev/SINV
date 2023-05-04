@@ -3,6 +3,8 @@ package cl.ucn.disc.pa.sinv.services;
 import cl.ucn.disc.pa.sinv.model.Instrument;
 import cl.ucn.disc.pa.sinv.model.Ticket;
 
+import java.io.IOException;
+
 /**
  * This interface provided the main system of SINV
  */
@@ -15,7 +17,7 @@ public interface SystemSINV {
      * @param fileName name file
      */
 
-    void fill(String fileName);
+    void fill(String fileName) throws IOException;
 
     /**
      * Sell a instrument

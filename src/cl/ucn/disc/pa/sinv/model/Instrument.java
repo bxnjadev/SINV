@@ -25,4 +25,13 @@ public class Instrument {
 
     }
 
+    public String getCode() {
+
+    }
+
+    public String getType() {
+
+    }
+
+
 }
