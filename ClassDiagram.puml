@@ -1,0 +1,45 @@
+@startuml
+!pragma layout smetana
+
+interface SystemSINV {
+    fill(fileName : String) : void
+    sellInstrument(code : String) : Ticket
+    searchInstrumentByCode(code : String) : Instrument
+    searchInstrumentByType() : Instrument[]
+}
+
+interface InstrumentReader {
+    next() : Instrument
+    hasNext(): boolean
+}
+
+class DefaultSystemSINV {
+}
+
+class CvsInstrumentReader {
+    - name : String
+    - fileManager : ArchivoEntrada
+
+    - open()
+}
+
+class Instrument {
+    - stockAvailable : int
+
+    hasStock() : boolean
+    removeStock() : void
+    getStock() : int
+    - setStock(stock : int): int
+
+}
+
+class StringInstrument {
+}
+
+DefaultSystemSINV ...|> SystemSINV
+CvsInstrumentReader ...|> InstrumentReader
+StringInstrument --|> Instrument
+DefaultSystemSINV *-- Instrument
+DefaultSystemSINV *-- InstrumentReader
+
+@enduml
