@@ -1,7 +1,7 @@
 package cl.ucn.disc.pa.sinv.model;
 
 public class Instrument {
-    // -------------------------------------------------ATRIBUTOS-------------------------------------------------------
+
     private String code;
     private int stockAvailable;
     private int price;
@@ -14,7 +14,7 @@ public class Instrument {
         this.type = type;
     }
 
-    //-------------------------------------------------FUNCIONES GET----------------------------------------------------
+
     public boolean hasStock() {
         return stockAvailable > 0;
     }
