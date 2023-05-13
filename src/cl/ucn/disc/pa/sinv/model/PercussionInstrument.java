@@ -11,7 +11,6 @@ public class PercussionInstrument extends Instrument{
 
     }
 
-    //-----------------------------------------------FUNCIONES GET------------------------------------------------------
     public String getInstrument(){
         return this.instrument;
     }
@@ -24,8 +23,6 @@ public class PercussionInstrument extends Instrument{
     public String getAltura(){
         return this.altitude;
     }
-
-    //------------------------------------------------FUNCIONES SET-----------------------------------------------------
 
     public void setTypePerseccussion(String typePerseccussion){
         this.typePerseccussion = typePerseccussion;

@@ -14,7 +14,6 @@ public class StringInstrument extends Instrument {
         super(code, stockAvailable, price, type);
     }
 
-    //----------------------------------------------FUNCIONES GET-------------------------------------------------------
     public String getInstrument(){
         return this.instrument;
     }
@@ -31,7 +30,6 @@ public class StringInstrument extends Instrument {
         return this.numberString;
     }
 
-    //-----------------------------------------------FUNCIONES SET------------------------------------------------------
     public void setTypeString(String typeString){
         this.typeString = typeString;
     }
