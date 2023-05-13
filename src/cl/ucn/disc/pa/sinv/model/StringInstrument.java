@@ -1,7 +1,5 @@
 package cl.ucn.disc.pa.sinv.model;
 
-import org.omg.CORBA.WStringSeqHelper;
-
 public class StringInstrument extends Instrument {
 
     private String instrument;
@@ -36,4 +34,10 @@ public class StringInstrument extends Instrument {
     public void setMaterial(String material){
         this.material = material;
     }
+
+    @Override
+    public void show() {
+
+    }
+
 }

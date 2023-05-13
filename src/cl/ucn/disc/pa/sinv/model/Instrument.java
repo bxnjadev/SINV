@@ -1,17 +1,19 @@
 package cl.ucn.disc.pa.sinv.model;
 
-public class Instrument {
+public abstract class Instrument implements Showable {
 
     private String code;
     private int stockAvailable;
     private int price;
     private String type;
+    private String name;
 
-    public Instrument(String code, int stockAvailable, int price, String type){
+    public Instrument(String code, int stockAvailable, int price, String type) {
         this.code = code;
         this.stockAvailable = stockAvailable;
         this.price = price;
         this.type = type;
+        this.name = name;
     }
 
 
@@ -35,15 +37,21 @@ public class Instrument {
         }
 
     }
+
     public String getCode() {
         return this.code;
     }
-    public String getType(){
+
+    public String getType() {
         return this.type;
     }
 
     public int getPrice() {
         return this.price;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
 }

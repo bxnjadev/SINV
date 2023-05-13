@@ -1,6 +1,7 @@
 package cl.ucn.disc.pa.sinv.model;
 
-public class PercussionInstrument extends Instrument{
+public class PercussionInstrument extends Instrument {
+
     private String instrument;
     private String typePerseccussion;
     private String material;
@@ -33,4 +34,10 @@ public class PercussionInstrument extends Instrument{
     public void setAltitude(String altitude){
         this.altitude = altitude;
     }
+
+    @Override
+    public void show() {
+
+    }
+
 }
