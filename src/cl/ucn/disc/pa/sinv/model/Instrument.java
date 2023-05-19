@@ -1,5 +1,7 @@
 package cl.ucn.disc.pa.sinv.model;
 
+import ucn.StdOut;
+
 public abstract class Instrument implements Showable {
 
     private String code;
@@ -52,6 +54,14 @@ public abstract class Instrument implements Showable {
 
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public void show() {
+        StdOut.println("Code: " + code);
+        StdOut.println("Stock: " + stockAvailable);
+        StdOut.println("Price: " + price);
+        StdOut.println("Name: " + name);
     }
 
 }

@@ -1,6 +1,7 @@
 package cl.ucn.disc.pa.sinv.read;
 
 import cl.ucn.disc.pa.sinv.model.Instrument;
+import cl.ucn.disc.pa.sinv.utils.InstrumentSerializerHelper;
 import ucn.ArchivoEntrada;
 
 import java.io.IOException;

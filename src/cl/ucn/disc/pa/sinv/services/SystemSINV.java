@@ -20,6 +20,13 @@ public interface SystemSINV {
     void fill(String fileName) throws IOException;
 
     /**
+     * Save the data in a fileName
+     * @param fileName the fileName
+     */
+
+    void save(String fileName) throws  IOException;
+
+    /**
      * Sell a instrument
      *
      * @param code the instrument code

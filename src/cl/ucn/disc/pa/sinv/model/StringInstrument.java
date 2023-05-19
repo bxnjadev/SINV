@@ -1,14 +1,17 @@
 package cl.ucn.disc.pa.sinv.model;
 
+import ucn.StdOut;
+
 public class StringInstrument extends Instrument {
 
     private String instrument;
     private String typeString;
     private String material;
-    private String instrumentclass;
+    private String instrumentClass;
     private int numberString;
 
-    public StringInstrument(String code, int stockAvailable, int price, String type) {
+    public StringInstrument(String code, int stockAvailable, int price, String type,
+                            String instrument, String  typeString, String material, String instrumentClass, int numberString) {
         super(code, stockAvailable, price, type);
     }
 
@@ -21,8 +24,8 @@ public class StringInstrument extends Instrument {
     public String getMaterial(){
         return this.material;
     }
-    public String getInstrumentclass(){
-        return this.instrumentclass;
+    public String getInstrumentClass(){
+        return this.instrumentClass;
     }
     public int getNumberString(){
         return this.numberString;
@@ -37,6 +40,10 @@ public class StringInstrument extends Instrument {
 
     @Override
     public void show() {
+        StdOut.println("Type String: " + typeString);
+        StdOut.println("Type Material: " + material);
+        StdOut.println("Instrument Class: " + instrumentClass);
+        StdOut.println("");
 
     }
 

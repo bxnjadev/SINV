@@ -1,6 +1,6 @@
 package cl.ucn.disc.pa.sinv.model;
 
-public class Ticket {
+public class Ticket implements Showable {
 
     private final String sellInstrument;
     private final int price;
@@ -17,6 +17,11 @@ public class Ticket {
     @Override
     public String toString() {
         return "Instrumento vendido: " + sellInstrument + " Precio " + price;
+    }
+
+    @Override
+    public void show() {
+
     }
 
 }

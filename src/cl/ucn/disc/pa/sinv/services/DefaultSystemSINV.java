@@ -30,6 +30,11 @@ public class DefaultSystemSINV implements SystemSINV {
     }
 
     @Override
+    public void save(String fileName) throws IOException {
+
+    }
+
+    @Override
     public Ticket sellInstrument(String code) {
         Instrument instrumentSearched = searchInstrumentByCode(code);
 

@@ -1,5 +1,7 @@
 package cl.ucn.disc.pa.sinv.model;
 
+import ucn.StdOut;
+
 public class PercussionInstrument extends Instrument {
 
     private String instrument;
@@ -7,8 +9,13 @@ public class PercussionInstrument extends Instrument {
     private String material;
     private String altitude;
 
-    public PercussionInstrument(String code, int stockAvailable, int price, String type) {
+    public PercussionInstrument(String code, int stockAvailable, int price, String type,
+                                String instrument, String typePerseccussion, String material, String altitude) {
         super(code, stockAvailable, price, type);
+        this.instrument = instrument;
+        this.typePerseccussion = typePerseccussion;
+        this.material = material;
+        this.altitude = altitude;
 
     }
 
@@ -37,7 +44,10 @@ public class PercussionInstrument extends Instrument {
 
     @Override
     public void show() {
-
+        super.show();
+        StdOut.println("TypePercussion: " + getTypePerseccussion());
+        StdOut.println("Material: " + getMaterial());
+        StdOut.println("Altitude: " + getAltura());
     }
 
 }
