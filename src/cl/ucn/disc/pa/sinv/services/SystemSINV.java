@@ -62,4 +62,11 @@ public interface SystemSINV {
 
     Instrument[] searchInstrumentByType(String  type);
 
+    /**
+     * Get all instruments
+     * @return get all instruments in the system
+     */
+
+    Instrument[] getInstruments();
+
 }

@@ -30,7 +30,7 @@ public class CvsInstrumentReader implements InstrumentReader {
 
     @Override
     public boolean hasNext() {
-        return fileManager.isEndFile();
+        return !fileManager.isEndFile();
     }
 
     @Override

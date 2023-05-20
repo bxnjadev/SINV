@@ -4,29 +4,27 @@ import ucn.StdOut;
 
 public class StringInstrument extends Instrument {
 
-    private String instrument;
     private String typeString;
-    private String material;
-    private String instrumentClass;
-    private int numberString;
+    private final String typeStringInstrument;
+    private final int numberString;
 
     public StringInstrument(String code, int stockAvailable, int price, String type,
-                            String instrument, String  typeString, String material, String instrumentClass, int numberString) {
-        super(code, stockAvailable, price, type);
+                            String  typeString, String name, String material,
+                            int numberString,  String typeStringInstrument) {
+        super(code, stockAvailable, price, type, name, material);
+        this.typeString = typeString;
+        this.typeStringInstrument = typeStringInstrument;
+        this.numberString = numberString;
     }
 
-    public String getInstrument(){
-        return this.instrument;
-    }
     public String getTypeString(){
         return this.typeString;
     }
-    public String getMaterial(){
-        return this.material;
+
+    public String getTypeStringInstrument(){
+        return this.typeStringInstrument;
     }
-    public String getInstrumentClass(){
-        return this.instrumentClass;
-    }
+
     public int getNumberString(){
         return this.numberString;
     }
@@ -34,17 +32,12 @@ public class StringInstrument extends Instrument {
     public void setTypeString(String typeString){
         this.typeString = typeString;
     }
-    public void setMaterial(String material){
-        this.material = material;
-    }
 
     @Override
     public void show() {
+        System.out.println("LLLLLLLLLl");
+        super.show();
         StdOut.println("Type String: " + typeString);
-        StdOut.println("Type Material: " + material);
-        StdOut.println("Instrument Class: " + instrumentClass);
-        StdOut.println("");
-
     }
 
 }

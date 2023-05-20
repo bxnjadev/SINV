@@ -14,32 +14,41 @@ public class InstrumentSerializerHelper {
         String type = registro.getString();
 
         return switch (type) {
-            case "Persecusion" -> constructPersecussionInstrument(registro);
-            case "Cuerda" -> constructStringInstrument(registro);
-            default -> constructWindInstrument(registro);
+            case "Percusión" -> constructPersecussionInstrument(type, registro);
+            case "Cuerda" -> constructStringInstrument(type, registro);
+            default -> constructWindInstrument(type, registro);
         };
 
     }
 
-    private static Instrument constructPersecussionInstrument(Registro registro) throws IOException {
-        return new PercussionInstrument(registro.getString(), registro.getInt(), registro.getInt(), registro.getString(),
+    private static Instrument constructPersecussionInstrument(String  type, Registro registro) throws IOException {
+        System.out.println("Construyendo un item ");
+        return new PercussionInstrument(registro.getString(), registro.getInt(), registro.getInt(), type,
                 registro.getString(), registro.getString(), registro.getString(), registro.getString());
     }
 
-    private static Instrument constructWindInstrument(Registro registro) throws IOException {
+    private static Instrument constructWindInstrument(String type, Registro registro) throws IOException {
         return new WindInstrument(registro.getString(), registro.getInt(), registro.getInt()
-                , registro.getString(), registro.getString(), registro.getString());
+                ,type, registro.getString(), registro.getString());
     }
 
-    private static Instrument constructStringInstrument(Registro registro) throws IOException {
+    private static Instrument constructStringInstrument(String type, Registro registro) throws IOException {
         return new StringInstrument(registro.getString(), registro.getInt(), registro.getInt()
-                , registro.getString(), registro.getString(), registro.getString(),
-                registro.getString(), registro.getString(),
-                registro.getInt());
+                , type, registro.getString(), registro.getString(),
+                registro.getString(), registro.getInt(),
+                registro.getString());
     }
 
     public static Registro constructRegistro(Instrument instrument) {
+       /* switch (instrument.getType()) {
+            case "percussion":
+                return RegistroBuilder.newBuilder(9)
+                        .addField(instrument.getCode())
 
+        }*/
+
+        return null;
     }
+
 
 }

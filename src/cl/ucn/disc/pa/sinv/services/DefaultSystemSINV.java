@@ -20,7 +20,6 @@ public class DefaultSystemSINV implements SystemSINV {
     public void fill(String fileName) throws IOException {
 
         while (instrumentReader.hasNext()) {
-
             instruments = ArrayHelper.append(
                     instruments, instrumentReader.next()
             );
@@ -87,6 +86,11 @@ public class DefaultSystemSINV implements SystemSINV {
         }
 
         return instrumentsSearched;
+    }
+
+    @Override
+    public Instrument[] getInstruments() {
+        return instruments;
     }
 
 }

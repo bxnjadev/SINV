@@ -4,50 +4,35 @@ import ucn.StdOut;
 
 public class PercussionInstrument extends Instrument {
 
-    private String instrument;
-    private String typePerseccussion;
-    private String material;
+    private final String typePerseccussion;
     private String altitude;
 
     public PercussionInstrument(String code, int stockAvailable, int price, String type,
-                                String instrument, String typePerseccussion, String material, String altitude) {
-        super(code, stockAvailable, price, type);
-        this.instrument = instrument;
+                                String name, String typePerseccussion,  String material, String altitude) {
+        super(code, stockAvailable, price, type, name, material);
         this.typePerseccussion = typePerseccussion;
-        this.material = material;
         this.altitude = altitude;
 
     }
 
-    public String getInstrument(){
-        return this.instrument;
-    }
     public String getTypePerseccussion(){
         return this.typePerseccussion;
     }
-    public String getMaterial(){
-        return this.material;
-    }
-    public String getAltura(){
+
+    public String getAltitude()
+    {
         return this.altitude;
     }
 
-    public void setTypePerseccussion(String typePerseccussion){
-        this.typePerseccussion = typePerseccussion;
-    }
-    public void setMaterial(String material){
-        this.material = material;
-    }
     public void setAltitude(String altitude){
         this.altitude = altitude;
     }
 
     @Override
     public void show() {
+        System.out.println("RRRRRRR");
         super.show();
-        StdOut.println("TypePercussion: " + getTypePerseccussion());
-        StdOut.println("Material: " + getMaterial());
-        StdOut.println("Altitude: " + getAltura());
+        StdOut.println("TypePercussion: " + getTypePerseccussion() + " Material: " + getMaterial() + " Altura " + getAltitude());
     }
 
 }

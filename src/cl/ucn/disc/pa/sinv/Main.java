@@ -2,42 +2,58 @@ package cl.ucn.disc.pa.sinv;
 
 import cl.ucn.disc.pa.sinv.model.Instrument;
 import cl.ucn.disc.pa.sinv.model.Ticket;
+import cl.ucn.disc.pa.sinv.read.CvsInstrumentReader;
+import cl.ucn.disc.pa.sinv.read.InstrumentReader;
+import cl.ucn.disc.pa.sinv.services.DefaultSystemSINV;
 import cl.ucn.disc.pa.sinv.services.SystemSINV;
 import cl.ucn.disc.pa.sinv.utils.PaginatorInstrument;
 import ucn.StdIn;
 import ucn.StdOut;
 
+import java.io.IOException;
 import java.util.Locale;
 
 public class Main {
 
+    private static final String FILE_INSTRUMENT = "instruments.cvs";
+
     private static final String SEPARATOR = "<------------------------------->";
     private static final String PREFIX = "[BeatTheRhythm] > ";
 
-    private static final SystemSINV systemSINV = null;
+    private static SystemSINV systemSINV = null;
 
-    public static void main(String[] args) {
-        StdOut.print(PREFIX + " Bienvenido, ¿Qué deseas hacer?");
+    public static void main(String[] args) throws IOException {
+
+        InstrumentReader instrumentReader = new CvsInstrumentReader(FILE_INSTRUMENT);
+
+        systemSINV = new DefaultSystemSINV(
+                instrumentReader
+        );
+
+        StdOut.println(PREFIX + " Bienvenido, ¿Qué deseas hacer?");
 
         showOptions("Agregar instrumento",
                 "Vender instrumento",
                 "Consultar instrumento",
                 "Salir");
 
-        int option = StdIn.readInt();
         while (true) {
 
+            int option = StdIn.readInt();
+
             if (option == 1) {
+                systemSINV.fill(FILE_INSTRUMENT);
+                System.out.println("Has cargado el archivo");
+            } else if (option == 2) {
                 showMenuSellInstrument();
                 break;
-            }
-
-            if (option == 2) {
+            } else if (option == 3) {
                 showMenuQueryInstrument();
                 break;
+            } else {
+                StdOut.println(PREFIX + " Ingresa una opción valida");
             }
 
-            StdOut.println(PREFIX + " Ingresa una opción valida");
         }
 
     }
@@ -55,11 +71,21 @@ public class Main {
     private static void showMenuQueryInstrument() {
 
         StdOut.println("Ingrese el tipo de busqueda: ");
-        showOptions("Buscar por tipo", "Buscar por código");
+
+        showOptions("Mostrar todos",
+                "Buscar por tipo",
+                "Buscar por código");
 
         int option = StdIn.readInt();
 
         if (option == 1) {
+
+            Instrument[] instruments = systemSINV.getInstruments();
+
+            showMenuPagination(instruments);
+        }
+
+        if (option == 2) {
 
             String type = StdIn.readString();
             Instrument[] instruments = systemSINV.searchInstrumentByType(type);
@@ -67,7 +93,7 @@ public class Main {
             showMenuPagination(instruments);
         }
 
-        if (option == 2) {
+        if (option == 1) {
 
             String code = StdIn.readString();
 
@@ -81,7 +107,7 @@ public class Main {
 
     private static void showOptions(String... options) {
         for (int i = 0; i < options.length; i++) {
-            StdOut.println(i + ". " + options[i]);
+            StdOut.println((i + 1) + ". " + options[i]);
         }
     }
 
@@ -95,10 +121,11 @@ public class Main {
 
             if (reply.equals("si")) {
 
+                StdOut.println("Ingresa la página: ");
                 int page = StdIn.readInt();
                 showInstruments(instruments, page);
 
-            }  else {
+            } else {
                 break;
             }
 
@@ -110,6 +137,11 @@ public class Main {
 
         PaginatorInstrument paginatorInstrument = new PaginatorInstrument(instruments, 10);
         Instrument[] instrumentsSearched = paginatorInstrument.search(page);
+
+        if (instrumentsSearched == null) {
+            StdOut.println("En está pagina no hay items :(");
+            return;
+        }
 
         for (Instrument instrument : instrumentsSearched) {
             StdOut.println(SEPARATOR);

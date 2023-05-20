@@ -4,18 +4,21 @@ import ucn.StdOut;
 
 public abstract class Instrument implements Showable {
 
-    private String code;
+    private final String code;
     private int stockAvailable;
-    private int price;
-    private String type;
-    private String name;
+    private final int price;
+    private final String type;
+    private final String name;
+    private final String material;
 
-    public Instrument(String code, int stockAvailable, int price, String type) {
+    public Instrument(String code, int stockAvailable, int price, String type, String name,
+                      String material) {
         this.code = code;
         this.stockAvailable = stockAvailable;
         this.price = price;
         this.type = type;
         this.name = name;
+        this.material = material;
     }
 
 
@@ -56,12 +59,13 @@ public abstract class Instrument implements Showable {
         return this.name;
     }
 
+    public String getMaterial() {
+        return this.material;
+    }
+
     @Override
     public void show() {
-        StdOut.println("Code: " + code);
-        StdOut.println("Stock: " + stockAvailable);
-        StdOut.println("Price: " + price);
-        StdOut.println("Name: " + name);
+        StdOut.println("Code: " + code + " Stock " + stockAvailable + " Price " + price + " Name " + name);
     }
 
 }

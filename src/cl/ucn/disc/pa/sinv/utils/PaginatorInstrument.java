@@ -1,6 +1,7 @@
 package cl.ucn.disc.pa.sinv.utils;
 
 import cl.ucn.disc.pa.sinv.model.Instrument;
+import ucn.StdOut;
 
 public class PaginatorInstrument {
 
@@ -15,16 +16,26 @@ public class PaginatorInstrument {
     public Instrument[] search(int page) {
 
         Instrument[] objects = new Instrument[0];
-        int positionFirstElement = page * maxInPage;
+        int positionFirstElement = (page - 1) * maxInPage;
 
-        if (!(elements.length >= positionFirstElement)) {
+        /*if (!(elements.length >= positionFirstElement)) {
             return null;
-        }
+        }*/
 
-        for (int i = 0; i < (page + maxInPage); i++) {
+        StdOut.println("Inicio: " + positionFirstElement);
+        StdOut.println("Final: " + (positionFirstElement + maxInPage));
+
+        for (int i = positionFirstElement; i < (positionFirstElement + maxInPage) - 1; i++) {
+
+            if (i >= elements.length) {
+                System.out.println("Si");
+                break;
+            }
+
             objects = ArrayHelper.append(objects, elements[i]);
         }
 
+        System.out.println(objects.length);
         return objects;
     }
 
