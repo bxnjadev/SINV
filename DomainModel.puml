@@ -1,0 +1,28 @@
+@startuml
+!pragma layout smetana
+
+entity Vendedor {
+}
+
+entity InstrumentoDeCuerda {
+
+}
+
+entity InstrumentoDeViento {
+}
+
+entity InstrumentoDePersecusion {
+}
+
+entity Boleta {
+}
+
+Vendedor -- InstrumentoDeCuerda : Vende >
+Vendedor -- InstrumentoDePersecusion : Vende : >
+Vendedor -- InstrumentoDeViento : Vende >
+
+InstrumentoDePersecusion -- Boleta : Genera
+InstrumentoDeViento -- Boleta : Genera
+InstrumentoDeCuerda -- Boleta : Genera
+
+@enduml
