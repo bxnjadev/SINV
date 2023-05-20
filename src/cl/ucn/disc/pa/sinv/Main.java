@@ -74,7 +74,8 @@ public class Main {
 
         showOptions("Mostrar todos",
                 "Buscar por tipo",
-                "Buscar por código");
+                "Buscar por código",
+                "Buscar por nombre (guitarra, saxofon... etc)");
 
         int option = StdIn.readInt();
 
@@ -93,14 +94,29 @@ public class Main {
             showMenuPagination(instruments);
         }
 
-        if (option == 1) {
+        if (option == 3) {
 
             String code = StdIn.readString();
 
             Instrument instrument =
                     systemSINV.searchInstrumentByCode(code);
 
+            if (instrument == null) {
+                StdOut.println("Lo siento, instrumento no encontrado");
+                return;
+            }
+
             instrument.show();
+        }
+
+        if (option == 4) {
+
+            String name = StdIn.readString();
+
+            Instrument[] instruments =
+                    systemSINV.searchByName(name);
+
+            showMenuPagination(instruments);
         }
 
     }

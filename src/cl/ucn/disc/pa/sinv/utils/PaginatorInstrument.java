@@ -18,17 +18,9 @@ public class PaginatorInstrument {
         Instrument[] objects = new Instrument[0];
         int positionFirstElement = (page - 1) * maxInPage;
 
-        /*if (!(elements.length >= positionFirstElement)) {
-            return null;
-        }*/
-
-        StdOut.println("Inicio: " + positionFirstElement);
-        StdOut.println("Final: " + (positionFirstElement + maxInPage));
-
         for (int i = positionFirstElement; i < (positionFirstElement + maxInPage) - 1; i++) {
 
             if (i >= elements.length) {
-                System.out.println("Si");
                 break;
             }
 

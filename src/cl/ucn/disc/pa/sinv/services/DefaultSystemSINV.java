@@ -89,6 +89,21 @@ public class DefaultSystemSINV implements SystemSINV {
     }
 
     @Override
+    public Instrument[] searchByName(String name) {
+        Instrument[] instrumentsSearched = new Instrument[0];
+
+        for (Instrument instrument : instruments) {
+            if (instrument.getName().equals(name)) {
+                instrumentsSearched = ArrayHelper.append(
+                        instrumentsSearched, instrument
+                );
+            }
+        }
+
+        return instrumentsSearched;
+    }
+
+    @Override
     public Instrument[] getInstruments() {
         return instruments;
     }
