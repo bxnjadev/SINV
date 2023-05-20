@@ -24,7 +24,7 @@ public interface SystemSINV {
      * @param fileName the fileName
      */
 
-    void save(String fileName) throws  IOException;
+    void save(String fileName) throws Exception;
 
     /**
      * Sell a instrument

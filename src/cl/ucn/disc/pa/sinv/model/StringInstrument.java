@@ -9,35 +9,40 @@ public class StringInstrument extends Instrument {
     private final int numberString;
 
     public StringInstrument(String code, int stockAvailable, int price, String type,
-                            String  typeString, String name, String material,
-                            int numberString,  String typeStringInstrument) {
+                            String typeString, String name, String material,
+                            int numberString, String typeStringInstrument) {
         super(code, stockAvailable, price, type, name, material);
         this.typeString = typeString;
         this.typeStringInstrument = typeStringInstrument;
         this.numberString = numberString;
     }
 
-    public String getTypeString(){
+    public String getTypeString() {
         return this.typeString;
     }
 
-    public String getTypeStringInstrument(){
+    public String getTypeStringInstrument() {
         return this.typeStringInstrument;
     }
 
-    public int getNumberString(){
+    public int getNumberString() {
         return this.numberString;
     }
 
-    public void setTypeString(String typeString){
+    public void setTypeString(String typeString) {
         this.typeString = typeString;
     }
 
     @Override
     public void show() {
-        System.out.println("LLLLLLLLLl");
         super.show();
         StdOut.println("Type String: " + typeString);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + SEPARATOR + getTypeString() + SEPARATOR + getName() + SEPARATOR +
+                getMaterial() + SEPARATOR + getNumberString() + SEPARATOR + getTypeStringInstrument();
     }
 
 }

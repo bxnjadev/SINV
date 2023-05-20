@@ -1,4 +1,4 @@
-Cuerda,75321,35,500,Nylon,Guitarra,Madera,6,Acústico
+Cuerda,75321,34,500,Nylon,Guitarra,Madera,6,Acústico
 Cuerda,61947,42,900,Tripa,Violín,Madera,4,Acústico
 Cuerda,23571,27,1200,Nylon,Arpa,Madera,47,Acústico
 Cuerda,87936,51,800,Metal,Violonchelo,Madera,4,Eléctrico
@@ -7,8 +7,8 @@ Percusión,62187,180,22,Cajón,Idiófono,Metal,Indefinida
 Percusión,38549,320,64,Campanas Tubulares,Membranófono,Piel,Definida
 Percusión,73612,210,37,Bombo,Membranófono,Metal,Indefinida
 Percusión,10973,280,53,Cajón,Idiófono,Madera,Definida
-Viento,37492,45,320,Trompeta,Metal
-Viento,59671,27,210,Saxofón,Madera
-Viento,12876,61,480,Clarinete,Madera
-Viento,45329,33,280,Flauta Traversa,Metal
-Viento,71248,57,390,Saxofón,Metal
+Viento,37492,45,320
+Viento,59671,27,210
+Viento,12876,61,480
+Viento,45329,33,280
+Viento,71248,57,390

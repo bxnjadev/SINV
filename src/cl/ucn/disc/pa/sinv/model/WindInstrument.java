@@ -11,9 +11,4 @@ public class WindInstrument extends Instrument {
 
     }
 
-    @Override
-    public void show() {
-        super.show();
-    }
-
 }

@@ -1,5 +1,7 @@
 package cl.ucn.disc.pa.sinv.model;
 
+import ucn.StdOut;
+
 public class Ticket implements Showable {
 
     private final String sellInstrument;
@@ -21,7 +23,8 @@ public class Ticket implements Showable {
 
     @Override
     public void show() {
-
+        StdOut.println("Instrumento vendido: " + sellInstrument);
+        StdOut.println("Precio: " + price);
     }
 
 }

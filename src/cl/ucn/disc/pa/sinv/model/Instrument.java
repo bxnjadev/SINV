@@ -4,6 +4,8 @@ import ucn.StdOut;
 
 public abstract class Instrument implements Showable {
 
+    protected final String SEPARATOR = ",";
+
     private final String code;
     private int stockAvailable;
     private final int price;
@@ -68,4 +70,8 @@ public abstract class Instrument implements Showable {
         StdOut.println("Code: " + code + " Stock " + stockAvailable + " Price " + price + " Name " + name);
     }
 
+    @Override
+    public String toString() {
+        return type + SEPARATOR + code + SEPARATOR + stockAvailable + SEPARATOR + price;
+    }
 }

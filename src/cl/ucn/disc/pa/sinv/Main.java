@@ -22,7 +22,7 @@ public class Main {
 
     private static SystemSINV systemSINV = null;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         InstrumentReader instrumentReader = new CvsInstrumentReader(FILE_INSTRUMENT);
 
@@ -32,12 +32,13 @@ public class Main {
 
         StdOut.println(PREFIX + " Bienvenido, ¿Qué deseas hacer?");
 
-        showOptions("Agregar instrumento",
-                "Vender instrumento",
-                "Consultar instrumento",
-                "Salir");
-
         while (true) {
+
+            showOptions("Cargar instrumentos",
+                    "Guardar instrumentos",
+                    "Vender instrumento",
+                    "Consultar instrumento",
+                    "Salir");
 
             int option = StdIn.readInt();
 
@@ -45,15 +46,21 @@ public class Main {
                 systemSINV.fill(FILE_INSTRUMENT);
                 System.out.println("Has cargado el archivo");
             } else if (option == 2) {
-                showMenuSellInstrument();
-                break;
+                systemSINV.save(FILE_INSTRUMENT);
+                System.out.println("Has guardado el archivo");
             } else if (option == 3) {
+                showMenuSellInstrument();
+                continue;
+            } else if (option == 4) {
                 showMenuQueryInstrument();
                 break;
-            } else {
-                StdOut.println(PREFIX + " Ingresa una opción valida");
+
+            } else if (option == 5) {
+                StdOut.println("Has salido");
+                break;
             }
 
+            StdOut.println("Ingresa una opción valida");
         }
 
     }
@@ -63,9 +70,11 @@ public class Main {
         StdOut.println(PREFIX + " Ingresa el código del instrumento que quieres vender: ");
         String code = StdIn.readString();
 
+        StdOut.println(PREFIX + "Instrumento vendido " + code);
         Ticket ticket = systemSINV.sellInstrument(code);
 
         ticket.show();
+
     }
 
     private static void showMenuQueryInstrument() {

@@ -4,6 +4,7 @@ import cl.ucn.disc.pa.sinv.model.Instrument;
 import cl.ucn.disc.pa.sinv.model.PercussionInstrument;
 import cl.ucn.disc.pa.sinv.model.StringInstrument;
 import cl.ucn.disc.pa.sinv.model.WindInstrument;
+import ucn.ArchivoEntrada;
 import ucn.Registro;
 
 import java.io.IOException;
@@ -22,7 +23,6 @@ public class InstrumentSerializerHelper {
     }
 
     private static Instrument constructPersecussionInstrument(String  type, Registro registro) throws IOException {
-        System.out.println("Construyendo un item ");
         return new PercussionInstrument(registro.getString(), registro.getInt(), registro.getInt(), type,
                 registro.getString(), registro.getString(), registro.getString(), registro.getString());
     }
@@ -40,14 +40,7 @@ public class InstrumentSerializerHelper {
     }
 
     public static Registro constructRegistro(Instrument instrument) {
-       /* switch (instrument.getType()) {
-            case "percussion":
-                return RegistroBuilder.newBuilder(9)
-                        .addField(instrument.getCode())
-
-        }*/
-
-        return null;
+        return new Registro(instrument.toString(), null);
     }
 
 

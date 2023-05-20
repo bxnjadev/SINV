@@ -4,6 +4,10 @@ import cl.ucn.disc.pa.sinv.model.Instrument;
 import cl.ucn.disc.pa.sinv.model.Ticket;
 import cl.ucn.disc.pa.sinv.read.InstrumentReader;
 import cl.ucn.disc.pa.sinv.utils.ArrayHelper;
+import cl.ucn.disc.pa.sinv.utils.InstrumentSerializerHelper;
+import cl.ucn.disc.pa.sinv.write.CvsInstrumentWriter;
+import cl.ucn.disc.pa.sinv.write.InstrumentWriter;
+import ucn.ArchivoSalida;
 
 import java.io.IOException;
 
@@ -29,7 +33,15 @@ public class DefaultSystemSINV implements SystemSINV {
     }
 
     @Override
-    public void save(String fileName) throws IOException {
+    public void save(String fileName) throws Exception {
+
+        InstrumentWriter instrumentWriter = new CvsInstrumentWriter(fileName);
+
+        for (Instrument instrument : instruments) {
+            instrumentWriter.save(instrument);
+        }
+
+        instrumentWriter.close();
 
     }
 

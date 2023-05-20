@@ -30,9 +30,14 @@ public class PercussionInstrument extends Instrument {
 
     @Override
     public void show() {
-        System.out.println("RRRRRRR");
         super.show();
         StdOut.println("TypePercussion: " + getTypePerseccussion() + " Material: " + getMaterial() + " Altura " + getAltitude());
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + SEPARATOR + getName() + SEPARATOR + getTypePerseccussion() +
+                SEPARATOR + getMaterial() + SEPARATOR + getAltitude();
     }
 
 }
