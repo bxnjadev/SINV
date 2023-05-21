@@ -20,4 +20,14 @@ public class WindInstrument extends Instrument {
 
     }
 
+    @Override
+    public void show() {
+        super.show();
+        StdOut.println("Material: " + getMaterial());
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + SEPARATOR + getName() + SEPARATOR + getMaterial();
+    }
 }

@@ -8,6 +8,7 @@ import cl.ucn.disc.pa.sinv.utils.InstrumentSerializerHelper;
 import cl.ucn.disc.pa.sinv.write.CvsInstrumentWriter;
 import cl.ucn.disc.pa.sinv.write.InstrumentWriter;
 import ucn.ArchivoSalida;
+import ucn.StdOut;
 
 import java.io.IOException;
 
@@ -87,13 +88,15 @@ public class DefaultSystemSINV implements SystemSINV {
         //Check if the instrument is null and this case throw a new exception
 
         if (instrumentSearched == null) {
-            throw new IllegalArgumentException("The instrument is not registered!");
+            StdOut.println("El instrumento no está registrado.");
+            return null;
         }
 
         //Check if the instrument has stock and this case throw a new exception
 
         if (!instrumentSearched.hasStock()) {
-            throw new IllegalArgumentException("The instrument have not stock");
+            StdOut.println("El instrumento no tiene stock.");
+            return null;
         }
 
         //Remove stock the instrument

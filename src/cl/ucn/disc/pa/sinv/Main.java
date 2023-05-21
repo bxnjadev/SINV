@@ -74,6 +74,11 @@ public class Main {
                 showMenuQueryInstrument();
             } else if (option == 5) {
                 StdOut.println("Has salido");
+
+                if (systemSINV.getInstruments().length != 0) {
+                    systemSINV.save(FILE_INSTRUMENT);
+                }
+
                 break;
             } else {
                 StdOut.println("Ingresa una opción valida");
@@ -94,13 +99,14 @@ public class Main {
         StdOut.println(PREFIX + " Ingresa el código del instrumento que quieres vender: ");
         String code = StdIn.readString();
 
-        StdOut.println(PREFIX + "Instrumento vendido " + code);
         Ticket ticket = systemSINV.sellInstrument(code);
 
         //If the purchase is realized the system create a ticket and show it
 
-        ticket.show();
-
+        if (ticket != null) {
+            StdOut.println(PREFIX + "Instrumento vendido " + code);
+            ticket.show();
+        }
     }
 
     /**
@@ -116,7 +122,8 @@ public class Main {
         showOptions("Mostrar todos",
                 "Buscar por tipo",
                 "Buscar por código",
-                "Buscar por nombre (guitarra, saxofon... etc)");
+                "Buscar por nombre (guitarra, saxofon... etc)",
+                "Ir para atras");
 
         //Wait a int for screen
 
@@ -128,6 +135,11 @@ public class Main {
 
             Instrument[] instruments = systemSINV.getInstruments();
 
+            if (instruments == null || instruments.length == 0) {
+                StdOut.println("No hay ningún instrumento de este tipo");
+                return;
+            }
+
             showMenuPagination(instruments);
         }
 
@@ -137,6 +149,11 @@ public class Main {
 
             String type = StdIn.readString();
             Instrument[] instruments = systemSINV.searchInstrumentByType(type);
+
+            if (instruments == null || instruments.length == 0) {
+                StdOut.println("No hay ningún instrumento de este tipo");
+                return;
+            }
 
             showMenuPagination(instruments);
         }
@@ -164,6 +181,7 @@ public class Main {
 
         if (option == 4) {
 
+            StdOut.println("Ingrese el nombre por el quiere buscar: ");
             //This method wait a String
             String name = StdIn.readString();
 
@@ -171,6 +189,11 @@ public class Main {
 
             Instrument[] instruments =
                     systemSINV.searchByName(name);
+
+            if (instruments == null || instruments.length == 0) {
+                StdOut.println("No hay ningún instrumento de este tipo");
+                return;
+            }
 
             //Show elements
             showMenuPagination(instruments);
@@ -180,6 +203,7 @@ public class Main {
 
     /**
      * Show the options menu
+     *
      * @param options the array options
      */
 
@@ -192,6 +216,7 @@ public class Main {
 
     /**
      * Open pagination menu
+     *
      * @param instruments the instrument array
      */
 
@@ -231,8 +256,9 @@ public class Main {
 
     /**
      * Show instruments based a page
+     *
      * @param instruments the instrument array
-     * @param page the page, this can be major that 0
+     * @param page        the page, this can be major that 0
      */
 
     private static void showInstruments(Instrument[] instruments, int page) {
