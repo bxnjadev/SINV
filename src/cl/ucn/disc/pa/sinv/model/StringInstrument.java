@@ -8,6 +8,19 @@ public class StringInstrument extends Instrument {
     private final String typeStringInstrument;
     private final int numberString;
 
+    /**
+     * The main constructor for the StringInstrument class
+     * @param code the code instrument
+     * @param stockAvailable the stock the instrument
+     * @param price the price the instrument
+     * @param type the type the instrument
+     * @param typeString the Type String instrument
+     * @param name the name instrument for example (guitar ... etc)
+     * @param material the material that was created
+     * @param numberString the number string the instrument
+     * @param typeStringInstrument this just accept two values, electric or acoustic
+     */
+
     public StringInstrument(String code, int stockAvailable, int price, String type,
                             String typeString, String name, String material,
                             int numberString, String typeStringInstrument) {
@@ -17,21 +30,36 @@ public class StringInstrument extends Instrument {
         this.numberString = numberString;
     }
 
+    /**
+     * Get the type string
+     * @return the type string
+     */
+
     public String getTypeString() {
         return this.typeString;
     }
+
+    /**
+     * Get the type string instrument
+     * @return the type string instrument
+     */
 
     public String getTypeStringInstrument() {
         return this.typeStringInstrument;
     }
 
+    /**
+     * Get the number string
+     * @return the number string
+     */
+
     public int getNumberString() {
         return this.numberString;
     }
 
-    public void setTypeString(String typeString) {
-        this.typeString = typeString;
-    }
+    /**
+     * Show the data of the class StringInstrument
+     */
 
     @Override
     public void show() {

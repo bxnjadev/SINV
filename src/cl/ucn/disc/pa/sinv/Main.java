@@ -65,6 +65,10 @@ public class Main {
 
     }
 
+    /**
+     * Open the menu for sale instruments
+     */
+
     private static void showMenuSellInstrument() {
 
         StdOut.println(PREFIX + " Ingresa el código del instrumento que quieres vender: ");
@@ -76,6 +80,10 @@ public class Main {
         ticket.show();
 
     }
+
+    /**
+     * Open menu for make query in instrument
+     */
 
     private static void showMenuQueryInstrument() {
 
@@ -130,11 +138,21 @@ public class Main {
 
     }
 
+    /**
+     * Show the options menu
+     * @param options the array options
+     */
+
     private static void showOptions(String... options) {
         for (int i = 0; i < options.length; i++) {
             StdOut.println((i + 1) + ". " + options[i]);
         }
     }
+
+    /**
+     * Open pagination menu
+     * @param instruments the instrument array
+     */
 
     private static void showMenuPagination(Instrument[] instruments) {
 
@@ -158,7 +176,17 @@ public class Main {
 
     }
 
+    /**
+     * Show instruments based a page
+     * @param instruments the instrument array
+     * @param page the page, this can be major that 0
+     */
+
     private static void showInstruments(Instrument[] instruments, int page) {
+
+        if (page <= 0) {
+            throw new IllegalArgumentException("The page should be major that 0");
+        }
 
         PaginatorInstrument paginatorInstrument = new PaginatorInstrument(instruments, 10);
         Instrument[] instrumentsSearched = paginatorInstrument.search(page);

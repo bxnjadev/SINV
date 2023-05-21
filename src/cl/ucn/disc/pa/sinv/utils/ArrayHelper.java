@@ -6,6 +6,14 @@ import java.util.List;
 
 public class ArrayHelper {
 
+    /**
+     * Simple method for add a element a array
+     * @param theStaticArray the static array
+     * @param theObject the object for added
+     * @param <T> the generic element
+     * @return the array updated
+     */
+
     public static <T> T[] append(T[] theStaticArray, T theObject) {
         // new arraylist
         List<T> theList = new ArrayList<>();

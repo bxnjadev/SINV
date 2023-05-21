@@ -13,6 +13,16 @@ public abstract class Instrument implements Showable {
     private final String name;
     private final String material;
 
+    /**
+     * The main constructor for the Instrument
+     * @param code the code class
+     * @param stockAvailable the stock available
+     * @param price the price the instrument
+     * @param type the type instrument
+     * @param name the name instrument
+     * @param material the material that was created
+     */
+
     public Instrument(String code, int stockAvailable, int price, String type, String name,
                       String material) {
         this.code = code;
@@ -23,18 +33,36 @@ public abstract class Instrument implements Showable {
         this.material = material;
     }
 
+    /**
+     * Check if it has stock
+     * @return true if it has stock, false if it no has stock
+     */
 
     public boolean hasStock() {
         return stockAvailable > 0;
     }
 
+    /**
+     * Remove the stock, this quantity is one
+     */
+
     public void removeStock() {
         setStock(getStock() - 1);
     }
 
+    /**
+     * Get stock available
+     * @return the stock available
+     */
+
     public int getStock() {
         return stockAvailable;
     }
+
+    /**
+     * Set the stock
+     * @param stockAvailable the stock available
+     */
 
     private void setStock(int stockAvailable) {
         this.stockAvailable = stockAvailable;
@@ -45,25 +73,54 @@ public abstract class Instrument implements Showable {
 
     }
 
+    /**
+     * Get code
+     * @return the code
+     */
+
     public String getCode() {
         return this.code;
     }
+
+    /**
+     * Get the type
+     * @return the type
+     */
 
     public String getType() {
         return this.type;
     }
 
+    /**
+     * Get price
+     * @return the price
+     */
+
     public int getPrice() {
         return this.price;
     }
+
+    /**
+     * Get name
+     * @return the name
+     */
 
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Get the material
+     * @return the material
+     */
+
     public String getMaterial() {
         return this.material;
     }
+
+    /**
+     * Show the component and date the instrument
+     */
 
     @Override
     public void show() {

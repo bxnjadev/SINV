@@ -36,15 +36,6 @@ public interface SystemSINV {
     Ticket sellInstrument(String code);
 
     /**
-     * Remove a product in stock
-     *
-     * @param code the product code
-     * @return -1 has no stock, 1 if were deleted
-     */
-
-    int removeProductInStock(String code);
-
-    /**
      * Search instrument by code
      *
      * @param code the instrument code
