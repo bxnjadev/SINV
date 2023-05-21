@@ -44,6 +44,8 @@ public class CvsInstrumentReader implements InstrumentReader {
 
     @Override
     public Instrument next() throws IOException {
+        //Use the InstrumentSerializerHelper for create a new instance based a "Registro"
+
         return InstrumentSerializerHelper.constructInstrument(
                 fileManager.getRegistro()
         );

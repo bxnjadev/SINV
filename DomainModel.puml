@@ -2,27 +2,52 @@
 !pragma layout smetana
 
 entity Vendedor {
+    Codigo: String
+    StockDisponibles: int
 }
 
 entity InstrumentoDeCuerda {
-
+    Codigo: String
+    Stock disponible: int
+    Precio: int
+    Tipo: String
+    Nombre: String
+    Material: String
+    Tipo intrumento de cuerda: String
+    Tipo de cuerda: String
 }
 
 entity InstrumentoDeViento {
+    Codigo: String
+    Stock disponible: int
+    Precio: int
+    Tipo: String
+    Nombre: String
+    Material: String
 }
 
 entity InstrumentoDePersecusion {
+    Codigo: String
+    Stock disponibles: int
+    Precio: int
+    Tipo: String
+    Nombre: String
+    Material: String
+    Altura: int
+    Tipo de persecucion: String
 }
 
 entity Boleta {
+    Nombre: String
+    Precio: int
 }
 
 Vendedor -- InstrumentoDeCuerda : Vende >
 Vendedor -- InstrumentoDePersecusion : Vende : >
 Vendedor -- InstrumentoDeViento : Vende >
 
-InstrumentoDePersecusion -- Boleta : Genera
-InstrumentoDeViento -- Boleta : Genera
-InstrumentoDeCuerda -- Boleta : Genera
+InstrumentoDePersecusion -- Boleta : Genera >
+InstrumentoDeViento -- Boleta : Genera >
+InstrumentoDeCuerda -- Boleta : Genera >
 
 @enduml

@@ -31,19 +31,26 @@ public class PaginatorInstrument {
 
     public Instrument[] search(int page) {
 
+        //Create empty array
+
         Instrument[] objects = new Instrument[0];
+
+        //Get the first position based in the page
         int positionFirstElement = (page - 1) * maxInPage;
+
+        //Iterate about the elements in this page
 
         for (int i = positionFirstElement; i < (positionFirstElement + maxInPage); i++) {
 
+            //If in this part no more elements make break at the for
             if (i >= elements.length) {
                 break;
             }
 
+            //Added element at the array
             objects = ArrayHelper.append(objects, elements[i]);
         }
 
-        System.out.println(objects.length);
         return objects;
     }
 

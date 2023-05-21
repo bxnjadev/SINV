@@ -38,7 +38,11 @@ public class DefaultSystemSINV implements SystemSINV {
     @Override
     public void fill(String fileName) throws IOException {
 
+        //Load the instruments using instrum read
+        //This while be will executed until finish the read
+
         while (instrumentReader.hasNext()) {
+            //The instruments are added at the array
             instruments = ArrayHelper.append(
                     instruments, instrumentReader.next()
             );
@@ -56,35 +60,47 @@ public class DefaultSystemSINV implements SystemSINV {
     @Override
     public void save(String fileName) throws Exception {
 
+        //Create a new instance InstrumentWriter
         InstrumentWriter instrumentWriter = new CvsInstrumentWriter(fileName);
 
+        //Iterate about all instruments and save it using InstrumentWriter
         for (Instrument instrument : instruments) {
             instrumentWriter.save(instrument);
         }
 
+        //Close the file
         instrumentWriter.close();
 
     }
 
     /**
-     * This method sell a instrument
+     * This method sell instrument
      * @param code the instrument code
      * @return the Ticket generate in the buy
      */
 
     @Override
     public Ticket sellInstrument(String code) {
+        //Search the instrument by her su code
         Instrument instrumentSearched = searchInstrumentByCode(code);
+
+        //Check if the instrument is null and this case throw a new exception
 
         if (instrumentSearched == null) {
             throw new IllegalArgumentException("The instrument is not registered!");
         }
 
+        //Check if the instrument has stock and this case throw a new exception
+
         if (!instrumentSearched.hasStock()) {
             throw new IllegalArgumentException("The instrument have not stock");
         }
 
+        //Remove stock the instrument
+
         instrumentSearched.removeStock();
+
+        //Generate a new ticket
 
         return new Ticket(
                 instrumentSearched.getName(),
@@ -102,6 +118,7 @@ public class DefaultSystemSINV implements SystemSINV {
     public Instrument searchInstrumentByCode(String code) {
         Instrument instrumentSearched = null;
 
+        //Iterate about all instrument and check if the code is the same in this case return it
         for (Instrument instrument : instruments) {
 
             if (instrument.getCode().equals(code)) {
@@ -121,7 +138,12 @@ public class DefaultSystemSINV implements SystemSINV {
     @Override
     public Instrument[] searchInstrumentByType(String type) {
 
+        //Create the new array elements
+
         Instrument[] instrumentsSearched = new Instrument[0];
+
+        //Iterate about all instrument and check if the type is the same in this
+        // case add it in this new array
 
         for (Instrument instrument : instruments) {
             if (instrument.getType().equals(type)) {
@@ -142,7 +164,12 @@ public class DefaultSystemSINV implements SystemSINV {
 
     @Override
     public Instrument[] searchByName(String name) {
+
+        //Create the new array elements
         Instrument[] instrumentsSearched = new Instrument[0];
+
+        //Iterate about all instrument and check if the name is the same in this
+        // case add it in this new array
 
         for (Instrument instrument : instruments) {
             if (instrument.getName().equals(name)) {

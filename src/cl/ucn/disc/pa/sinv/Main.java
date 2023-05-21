@@ -13,6 +13,12 @@ import ucn.StdOut;
 import java.io.IOException;
 import java.util.Locale;
 
+/**
+ * Taller N°3 Programación Avanzada
+ * Rut: 21.288.569-K - Roberto Díaz Araya
+ * Rut: 21.544.970-K - Benjamín Miranda Ovalle
+ */
+
 public class Main {
 
     private static final String FILE_INSTRUMENT = "instruments.cvs";
@@ -24,15 +30,24 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        //Create a class InstrumentReader as implementation CvsInstrumentReader
         InstrumentReader instrumentReader = new CvsInstrumentReader(FILE_INSTRUMENT);
+
+        //Create the class SystemSINV
 
         systemSINV = new DefaultSystemSINV(
                 instrumentReader
         );
 
         StdOut.println(PREFIX + " Bienvenido, ¿Qué deseas hacer?");
+        StdOut.println(PREFIX + " Primero antes de hacer cualquier cosa debe cargar los instrumentos");
+        StdOut.println(PREFIX + " Sino podría obtener más de un error");
+
+        //The main menu
 
         while (true) {
+
+            //Show the main options
 
             showOptions("Cargar instrumentos",
                     "Guardar instrumentos",
@@ -40,27 +55,30 @@ public class Main {
                     "Consultar instrumento",
                     "Salir");
 
+            //Wait a int
             int option = StdIn.readInt();
 
             if (option == 1) {
+
+                //Load all instruments
                 systemSINV.fill(FILE_INSTRUMENT);
                 System.out.println("Has cargado el archivo");
             } else if (option == 2) {
+
+                //Saves all instrument
                 systemSINV.save(FILE_INSTRUMENT);
                 System.out.println("Has guardado el archivo");
             } else if (option == 3) {
                 showMenuSellInstrument();
-                continue;
             } else if (option == 4) {
                 showMenuQueryInstrument();
-                break;
-
             } else if (option == 5) {
                 StdOut.println("Has salido");
                 break;
+            } else {
+                StdOut.println("Ingresa una opción valida");
             }
 
-            StdOut.println("Ingresa una opción valida");
         }
 
     }
@@ -71,11 +89,15 @@ public class Main {
 
     private static void showMenuSellInstrument() {
 
+        //Wait a code and sell a instrument
+
         StdOut.println(PREFIX + " Ingresa el código del instrumento que quieres vender: ");
         String code = StdIn.readString();
 
         StdOut.println(PREFIX + "Instrumento vendido " + code);
         Ticket ticket = systemSINV.sellInstrument(code);
+
+        //If the purchase is realized the system create a ticket and show it
 
         ticket.show();
 
@@ -87,6 +109,8 @@ public class Main {
 
     private static void showMenuQueryInstrument() {
 
+        //Shot it the main options
+
         StdOut.println("Ingrese el tipo de busqueda: ");
 
         showOptions("Mostrar todos",
@@ -94,9 +118,13 @@ public class Main {
                 "Buscar por código",
                 "Buscar por nombre (guitarra, saxofon... etc)");
 
+        //Wait a int for screen
+
         int option = StdIn.readInt();
 
         if (option == 1) {
+
+            //Get all instrument and show it
 
             Instrument[] instruments = systemSINV.getInstruments();
 
@@ -104,6 +132,8 @@ public class Main {
         }
 
         if (option == 2) {
+
+            //Search all instrument by type and show it
 
             String type = StdIn.readString();
             Instrument[] instruments = systemSINV.searchInstrumentByType(type);
@@ -113,26 +143,36 @@ public class Main {
 
         if (option == 3) {
 
+            //This method wait a String
+
             String code = StdIn.readString();
+
+            //Search a instrument by code
 
             Instrument instrument =
                     systemSINV.searchInstrumentByCode(code);
 
             if (instrument == null) {
+                //If the instrument is null is warned
                 StdOut.println("Lo siento, instrumento no encontrado");
                 return;
             }
 
+            //show the instrument
             instrument.show();
         }
 
         if (option == 4) {
 
+            //This method wait a String
             String name = StdIn.readString();
+
+            //Search a instruments by name
 
             Instrument[] instruments =
                     systemSINV.searchByName(name);
 
+            //Show elements
             showMenuPagination(instruments);
         }
 
@@ -144,6 +184,7 @@ public class Main {
      */
 
     private static void showOptions(String... options) {
+        //Show the options
         for (int i = 0; i < options.length; i++) {
             StdOut.println((i + 1) + ". " + options[i]);
         }
@@ -158,14 +199,26 @@ public class Main {
 
         while (true) {
 
+            //First ask it if want search
+
             StdOut.println("¿Quieres seguir buscando? (Si/No):");
+
+            //This method wait her reply
+
             String reply = StdIn.readString();
+
+            //Reply now be in lower
             reply = reply.toLowerCase(Locale.ROOT);
+
+            //Check the reply is equal to "si"
 
             if (reply.equals("si")) {
 
+                //This method wait the page entered
                 StdOut.println("Ingresa la página: ");
                 int page = StdIn.readInt();
+
+                //Show the instrument based an page
                 showInstruments(instruments, page);
 
             } else {
@@ -184,17 +237,25 @@ public class Main {
 
     private static void showInstruments(Instrument[] instruments, int page) {
 
+        //Check if page is minor that 0, if it is true throw exception
+
         if (page <= 0) {
             throw new IllegalArgumentException("The page should be major that 0");
         }
 
+        //Create the pagination and search
+
         PaginatorInstrument paginatorInstrument = new PaginatorInstrument(instruments, 10);
         Instrument[] instrumentsSearched = paginatorInstrument.search(page);
+
+        //Search if the instruments are null and warned if it true
 
         if (instrumentsSearched == null) {
             StdOut.println("En está pagina no hay items :(");
             return;
         }
+
+        //Iterate about the instrument and call the show function
 
         for (Instrument instrument : instrumentsSearched) {
             StdOut.println(SEPARATOR);
