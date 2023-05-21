@@ -6,11 +6,16 @@ import java.util.List;
 
 public class ArrayHelper {
 
+    private ArrayHelper() {
+        throw new IllegalArgumentException("You can't instance this class");
+    }
+
     /**
      * Simple method for add a element a array
+     *
      * @param theStaticArray the static array
-     * @param theObject the object for added
-     * @param <T> the generic element
+     * @param theObject      the object for added
+     * @param <T>            the generic element
      * @return the array updated
      */
 

@@ -22,6 +22,15 @@ package cl.ucn.disc.pa.sinv {
             + PaginatorInstrument(elements: Intruments[], maxInPage: int)
             + search(page: int): Instrument[]
         }
+
+        class ArrayHelper {
+
+            - ArrayHelper()
+
+            + append(theStatisticArray : T[], object []) : T[]
+
+        }
+
     }
 
     package read {
